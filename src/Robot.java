@@ -55,8 +55,6 @@ public class Robot {
                 System.out.println("ERROR! Due to instructions, Robot goes to out of ward. Please try again.");
                 return;
             }
-
-//            System.out.println(coordinateX + "\t" + coordinateY + "\t" + orientation);
         }
 
         System.out.println(coordinateX + "\t" + coordinateY + "\t" + orientation);
@@ -127,29 +125,48 @@ public class Robot {
     public static void main(String[] args) {
         Robot robot = new Robot();
 
+        //Test case 1 -> 1  3   N
         robot.setUpperRightCoordinates(5, 5);
         robot.setRobotPosition(1, 2, ORIENTATION_N);
         robot.setInstructions("LMLMLMLMM");
         robot.robotProcess();
 
+        //Test case 2 -> 5	1	E
         robot.setUpperRightCoordinates(5, 5);
         robot.setRobotPosition(3, 3, ORIENTATION_E);
         robot.setInstructions("MMRMMRMRRM");
         robot.robotProcess();
 
+        //Test case 3 -> ERROR! Due to instructions, Robot goes to out of ward. Please try again.
         robot.setUpperRightCoordinates(5, 5);
         robot.setRobotPosition(3, 3, ORIENTATION_E);
         robot.setInstructions("LRRRRRRRLLRRRLMMRMMMMMMM");
         robot.robotProcess();
 
+        //Test case 4 -> 7	1	W
         robot.setUpperRightCoordinates(7, 2);
         robot.setRobotPosition(7, 2, ORIENTATION_E);
         robot.setInstructions("LLLMR");
         robot.robotProcess();
 
+        //Test case 5 -> ERROR! Due to instructions, Robot goes to out of ward. Please try again.
         robot.setUpperRightCoordinates(0, 0);
         robot.setRobotPosition(0, 0, ORIENTATION_N);
         robot.setInstructions("LLLMM");
+        robot.robotProcess();
+
+
+        //Test case 6 -> IllegalArgumentException: Please, Give valid instructions.
+//        robot.setUpperRightCoordinates(0, 0);
+//        robot.setRobotPosition(0, 0, ORIENTATION_N);
+//        robot.setInstructions("LLLrrrMMM");
+//        robot.robotProcess();
+
+
+        //Test case 7 -> 24222	54558	W
+        robot.setUpperRightCoordinates(784554652, 44515845);
+        robot.setRobotPosition(24225, 54554, ORIENTATION_S);
+        robot.setInstructions("LRRMMLRRMMMMLLRMRL");
         robot.robotProcess();
     }
 }
